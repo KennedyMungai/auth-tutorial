@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { ReactNode } from 'react'
 
 type Props = {
@@ -9,7 +10,9 @@ type Props = {
 }
 
 const LoginButton = ({ children, asChild, mode = 'redirect' }: Props) => {
-	const onClick = () => console.log('Login Button Clicked')
+	const router = useRouter()
+
+	const onClick = () => router.push('/auth/login')
 
 	// TODO: Implement modal
 	if (mode === 'modal') {
