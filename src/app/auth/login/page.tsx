@@ -1,7 +1,9 @@
+import LoginForm from '@/components/auth/login-form'
+
 type Props = {}
 
 const LoginPage = () => {
-	return <div>LoginPage</div>
+	return <LoginForm />
 }
 
 export default LoginPage
