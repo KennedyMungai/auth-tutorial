@@ -1,6 +1,6 @@
 'use client'
 
-import { login } from '@/actions/login'
+import { register } from '@/actions/register'
 import CardWrapper from '@/components/auth/card-wrapper'
 import FormError from '@/components/form-error'
 import FormSuccess from '@/components/form-success'
@@ -14,7 +14,7 @@ import {
 	FormMessage
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { loginSchema } from '@/schemas'
+import { registerSchema } from '@/schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
@@ -26,20 +26,21 @@ const RegisterForm = () => {
 
 	const [isPending, startTransition] = useTransition()
 
-	const form = useForm<z.infer<typeof loginSchema>>({
-		resolver: zodResolver(loginSchema),
+	const form = useForm<z.infer<typeof registerSchema>>({
+		resolver: zodResolver(registerSchema),
 		defaultValues: {
 			email: '',
-			password: ''
+			password: '',
+			name: ''
 		}
 	})
 
-	const onSubmit = (values: z.infer<typeof loginSchema>) => {
+	const onSubmit = (values: z.infer<typeof registerSchema>) => {
 		setError('')
 		setSuccess('')
 
 		startTransition(() => {
-			login(values).then((data) => {
+			register(values).then((data) => {
 				setError(data.error)
 				setSuccess(data.success)
 			})
@@ -59,6 +60,23 @@ const RegisterForm = () => {
 					className='space-y-6'
 				>
 					<div className='space-y-4'>
+						<FormField
+							control={form.control}
+							name='name'
+							render={({ field }) => (
+								<FormItem>
+									<FormLabel>Name</FormLabel>
+									<FormControl>
+										<Input
+											{...field}
+											disabled={isPending}
+											placeholder='John Doe'
+										/>
+									</FormControl>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
 						<FormField
 							control={form.control}
 							name='email'
