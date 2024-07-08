@@ -16,11 +16,14 @@ import {
 import { Input } from '@/components/ui/input'
 import { loginSchema } from '@/schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useTransition } from 'react'
+import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 
 const LoginForm = () => {
+	const [error, setError] = useState<string | undefined>('')
+	const [success, setSuccess] = useState<string | undefined>('')
+
 	const [isPending, startTransition] = useTransition()
 
 	const form = useForm<z.infer<typeof loginSchema>>({
@@ -31,8 +34,17 @@ const LoginForm = () => {
 		}
 	})
 
-	const onSubmit = (values: z.infer<typeof loginSchema>) =>
-		startTransition(() => login(values))
+	const onSubmit = (values: z.infer<typeof loginSchema>) => {
+		setError('')
+		setSuccess('')
+
+		startTransition(() => {
+			login(values).then((data) => {
+				setError(data.error)
+				setSuccess(data.success)
+			})
+		})
+	}
 
 	return (
 		<CardWrapper
@@ -83,8 +95,8 @@ const LoginForm = () => {
 							)}
 						/>
 					</div>
-					<FormError message='' />
-					<FormSuccess message='' />
+					<FormError message={error} />
+					<FormSuccess message={success} />
 					<Button
 						className='w-full'
 						type='submit'
