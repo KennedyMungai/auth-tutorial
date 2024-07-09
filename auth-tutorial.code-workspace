@@ -5,6 +5,6 @@
 		}
 	],
 	"settings": {
-		"cSpell.words": ["clsx", "hookform", "lucide", "tailwindcss"]
+		"cSpell.words": ["clsx", "hookform", "lucide", "tailwindcss", "trpc"]
 	}
 }
