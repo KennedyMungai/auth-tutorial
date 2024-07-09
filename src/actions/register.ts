@@ -1,3 +1,5 @@
+'use server'
+
 import { db } from '@/lib/db'
 import { registerSchema } from '@/schemas'
 import bcrypt from 'bcryptjs'
