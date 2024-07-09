@@ -5,6 +5,13 @@
 		}
 	],
 	"settings": {
-		"cSpell.words": ["clsx", "hookform", "lucide", "tailwindcss", "trpc"]
+		"cSpell.words": [
+			"clsx",
+			"hookform",
+			"lucide",
+			"Signin",
+			"tailwindcss",
+			"trpc"
+		]
 	}
 }
