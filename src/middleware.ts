@@ -32,7 +32,7 @@ export default auth((req) => {
 		return Response.redirect(new URL('/auth/login', nextUrl))
 	}
 
-	return
+	return null
 })
 
 export const config = {
