@@ -48,7 +48,8 @@ const LoginForm = () => {
 		startTransition(() => {
 			login(values).then((data) => {
 				setError(data?.error)
-				setSuccess(data?.success)
+				// TODO: For when we have 2FA
+				// setSuccess(data?.success)
 			})
 		})
 	}
