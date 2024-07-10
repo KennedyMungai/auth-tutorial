@@ -10,7 +10,9 @@ const ErrorCard = () => {
 			backButtonHref='/auth/login'
 			backButtonLabel='Back to Login'
 		>
-			<TriangleAlertIcon />
+			<div className='w-full flex items-center justify-center'>
+				<TriangleAlertIcon className='size-8 text-rose-500' />
+			</div>
 		</CardWrapper>
 	)
 }
