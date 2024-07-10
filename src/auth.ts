@@ -6,6 +6,14 @@ import { UserRole } from '@prisma/client'
 import NextAuth from 'next-auth'
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
+	events: {
+		async linkAccount({ user }) {
+			await db.user.update({
+				where: { id: user.id },
+				data: { emailVerified: new Date() }
+			})
+		}
+	},
 	callbacks: {
 		// async signIn({ user }) {
 		// 	const existingUser = await getUserById(user.id)
