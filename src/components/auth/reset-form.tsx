@@ -1,6 +1,5 @@
 'use client'
 
-import { login } from '@/actions/login'
 import { reset } from '@/actions/reset'
 import CardWrapper from '@/components/auth/card-wrapper'
 import FormError from '@/components/form-error'
