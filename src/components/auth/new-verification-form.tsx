@@ -45,7 +45,7 @@ const NewVerificationForm = () => {
 					<Loader2 className='size-8 animate-spin text-neutral-400' />
 				)}
 				{success && <FormSuccess message={success} />}
-				{error && <FormError message={error} />}
+				{!success && <FormError message={error} />}
 			</div>
 		</CardWrapper>
 	)
