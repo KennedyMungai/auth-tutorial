@@ -15,6 +15,11 @@ import {
 	FormMessage
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import {
+	InputOTP,
+	InputOTPGroup,
+	InputOTPSlot
+} from '@/components/ui/input-otp'
 import { loginSchema } from '@/schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
@@ -22,11 +27,6 @@ import { useSearchParams } from 'next/navigation'
 import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
-import {
-	InputOTP,
-	InputOTPGroup,
-	InputOTPSlot
-} from '@/components/ui/input-otp'
 
 const LoginForm = () => {
 	const searchParams = useSearchParams()
