@@ -16,6 +16,7 @@ import {
 import { Input } from '@/components/ui/input'
 import { loginSchema } from '@/schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
+import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
@@ -97,6 +98,15 @@ const LoginForm = () => {
 											disabled={isPending}
 										/>
 									</FormControl>
+									<Link href='/auth/reset'>
+										<Button
+											size='sm'
+											variant={'link'}
+											className='px-0 font-normal'
+										>
+											Forgot Password?
+										</Button>
+									</Link>
 									<FormMessage />
 								</FormItem>
 							)}
