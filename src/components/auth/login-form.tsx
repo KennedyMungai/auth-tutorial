@@ -18,7 +18,8 @@ import { Input } from '@/components/ui/input'
 import {
 	InputOTP,
 	InputOTPGroup,
-	InputOTPSlot
+	InputOTPSlot,
+	InputOTPSeparator
 } from '@/components/ui/input-otp'
 import { loginSchema } from '@/schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -156,6 +157,7 @@ const LoginForm = () => {
 													<InputOTPSlot index={0} />
 													<InputOTPSlot index={1} />
 													<InputOTPSlot index={2} />
+													<InputOTPSeparator />
 													<InputOTPSlot index={3} />
 													<InputOTPSlot index={4} />
 													<InputOTPSlot index={5} />
