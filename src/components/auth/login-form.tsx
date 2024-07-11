@@ -90,76 +90,82 @@ const LoginForm = () => {
 					className='space-y-6'
 				>
 					<div className='space-y-4'>
-						<FormField
-							control={form.control}
-							name='email'
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel>Email</FormLabel>
-									<FormControl>
-										<Input
-											{...field}
-											placeholder='john.doe@example.com'
-											type='email'
-											disabled={isPending}
-										/>
-									</FormControl>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
-						<FormField
-							control={form.control}
-							name='password'
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel>Password</FormLabel>
-									<FormControl>
-										<Input
-											{...field}
-											type='password'
-											placeholder='********'
-											disabled={isPending}
-										/>
-									</FormControl>
-									<Link href='/auth/reset'>
-										<Button
-											size='sm'
-											variant={'link'}
-											className='px-0 font-normal'
-										>
-											Forgot Password?
-										</Button>
-									</Link>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
-						<FormField
-							control={form.control}
-							name='code'
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel>2FA Code</FormLabel>
-									<FormControl>
-										<InputOTP maxLength={6} {...field}>
-											<InputOTPGroup>
-												<InputOTPSlot index={0} />
-												<InputOTPSlot index={1} />
-												<InputOTPSlot index={2} />
-												<InputOTPSlot index={3} />
-												<InputOTPSlot index={4} />
-												<InputOTPSlot index={5} />
-											</InputOTPGroup>
-										</InputOTP>
-									</FormControl>
-									<FormDescription>
-										Please enter the 2FA code send to your
-										email address
-									</FormDescription>
-								</FormItem>
-							)}
-						/>
+						{!showTwoFactor && (
+							<>
+								<FormField
+									control={form.control}
+									name='email'
+									render={({ field }) => (
+										<FormItem>
+											<FormLabel>Email</FormLabel>
+											<FormControl>
+												<Input
+													{...field}
+													placeholder='john.doe@example.com'
+													type='email'
+													disabled={isPending}
+												/>
+											</FormControl>
+											<FormMessage />
+										</FormItem>
+									)}
+								/>
+								<FormField
+									control={form.control}
+									name='password'
+									render={({ field }) => (
+										<FormItem>
+											<FormLabel>Password</FormLabel>
+											<FormControl>
+												<Input
+													{...field}
+													type='password'
+													placeholder='********'
+													disabled={isPending}
+												/>
+											</FormControl>
+											<Link href='/auth/reset'>
+												<Button
+													size='sm'
+													variant={'link'}
+													className='px-0 font-normal'
+												>
+													Forgot Password?
+												</Button>
+											</Link>
+											<FormMessage />
+										</FormItem>
+									)}
+								/>
+							</>
+						)}
+						{showTwoFactor && (
+							<FormField
+								control={form.control}
+								name='code'
+								render={({ field }) => (
+									<FormItem>
+										<FormLabel>2FA Code</FormLabel>
+										<FormControl>
+											<InputOTP maxLength={6} {...field}>
+												<InputOTPGroup>
+													<InputOTPSlot index={0} />
+													<InputOTPSlot index={1} />
+													<InputOTPSlot index={2} />
+													<InputOTPSlot index={3} />
+													<InputOTPSlot index={4} />
+													<InputOTPSlot index={5} />
+												</InputOTPGroup>
+											</InputOTP>
+										</FormControl>
+										<FormDescription>
+											Please enter the 2FA code send to
+											your email address
+										</FormDescription>
+									</FormItem>
+								)}
+							/>
+						)}
 					</div>
 					<FormError message={error || urlError} />
 					<FormSuccess message={success} />
