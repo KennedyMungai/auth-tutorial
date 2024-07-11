@@ -95,6 +95,7 @@ const LoginForm = () => {
 										<Input
 											{...field}
 											type='password'
+											placeholder='********'
 											disabled={isPending}
 										/>
 									</FormControl>
