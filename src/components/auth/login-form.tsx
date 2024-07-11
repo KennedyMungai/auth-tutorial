@@ -147,7 +147,11 @@ const LoginForm = () => {
 									<FormItem>
 										<FormLabel>2FA Code</FormLabel>
 										<FormControl>
-											<InputOTP maxLength={6} {...field}>
+											<InputOTP
+												maxLength={6}
+												{...field}
+												disabled={isPending}
+											>
 												<InputOTPGroup>
 													<InputOTPSlot index={0} />
 													<InputOTPSlot index={1} />
