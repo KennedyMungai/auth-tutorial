@@ -39,9 +39,11 @@ const NewVerificationForm = () => {
 			backButtonHref={'/auth/login'}
 		>
 			<div className='flex flex-col gap-y-2 items-center w-full justify-center'>
-				<Loader2 className='size-8 animate-spin text-neutral-400' />
-				<FormSuccess message={success} />
-				<FormError message={error} />
+				{!success && !error && (
+					<Loader2 className='size-8 animate-spin text-neutral-400' />
+				)}
+				{success && <FormSuccess message={success} />}
+				{error && <FormError message={error} />}
 			</div>
 		</CardWrapper>
 	)
