@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button'
 import {
 	Form,
 	FormControl,
+	FormDescription,
 	FormField,
 	FormItem,
 	FormLabel,
@@ -21,6 +22,11 @@ import { useSearchParams } from 'next/navigation'
 import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
+import {
+	InputOTP,
+	InputOTPGroup,
+	InputOTPSlot
+} from '@/components/ui/input-otp'
 
 const LoginForm = () => {
 	const searchParams = useSearchParams()
@@ -109,6 +115,31 @@ const LoginForm = () => {
 										</Button>
 									</Link>
 									<FormMessage />
+								</FormItem>
+							)}
+						/>
+						<FormField
+							control={form.control}
+							name='code'
+							render={({ field }) => (
+								<FormItem>
+									<FormLabel>2FA Code</FormLabel>
+									<FormControl>
+										<InputOTP maxLength={6} {...field}>
+											<InputOTPGroup>
+												<InputOTPSlot index={0} />
+												<InputOTPSlot index={1} />
+												<InputOTPSlot index={2} />
+												<InputOTPSlot index={3} />
+												<InputOTPSlot index={4} />
+												<InputOTPSlot index={5} />
+											</InputOTPGroup>
+										</InputOTP>
+									</FormControl>
+									<FormDescription>
+										Please enter the 2FA code send to your
+										email address
+									</FormDescription>
 								</FormItem>
 							)}
 						/>
