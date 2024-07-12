@@ -180,7 +180,7 @@ const LoginForm = () => {
 						type='submit'
 						disabled={isPending}
 					>
-						Login
+						{showTwoFactor ? 'Confirm' : 'Login'}
 					</Button>
 				</form>
 			</Form>
