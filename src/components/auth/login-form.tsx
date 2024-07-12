@@ -18,8 +18,8 @@ import { Input } from '@/components/ui/input'
 import {
 	InputOTP,
 	InputOTPGroup,
-	InputOTPSlot,
-	InputOTPSeparator
+	InputOTPSeparator,
+	InputOTPSlot
 } from '@/components/ui/input-otp'
 import { loginSchema } from '@/schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
